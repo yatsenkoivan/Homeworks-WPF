@@ -156,10 +156,12 @@ namespace main_wpf
             if (Window1.Width >= 500)
             {
                 Scroll.Visibility = Visibility.Visible;
+                clearGrid.Visibility = Visibility.Visible;
             }
             else
             {
                 Scroll.Visibility = Visibility.Collapsed;
+                clearGrid.Visibility = Visibility.Collapsed;
             }
             FontFix();
             ButtonsFontFix();
@@ -221,8 +223,6 @@ namespace main_wpf
             if (SidePanel.Children.Count == 0)
             {
                 Button clear_button = new Button();
-                clear_button.Width = 40;
-                clear_button.Height = 40;
                 clear_button.Content = "🗑";
 
                 clear_button.Click += delegate
