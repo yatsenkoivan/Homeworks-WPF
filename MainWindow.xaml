@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Calculator" Height="520" Width="330" Cursor="AppStarting"
         MinHeight="520" MinWidth="330" KeyDown="Window1_KeyDown" SizeChanged="Window1_SizeChanged">
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition ></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>

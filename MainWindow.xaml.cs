@@ -23,33 +23,12 @@ namespace main_wpf
         static int maxLen = 16;
         static int inputFont = 72;
         static double button_font_ratio = 3;
-        List<Button> buttons;
         char? operation;
         public MainWindow()
         {
             InitializeComponent();
             Label_Operations.Content = "";
             Label_Input.Content = "0";
-            buttons = new List<Button>();
-            buttons.Add(button_0);
-            buttons.Add(button_1);
-            buttons.Add(button_2);
-            buttons.Add(button_3);
-            buttons.Add(button_4);
-            buttons.Add(button_5);
-            buttons.Add(button_6);
-            buttons.Add(button_7);
-            buttons.Add(button_8);
-            buttons.Add(button_9);
-            buttons.Add(button_add);
-            buttons.Add(button_subtract);
-            buttons.Add(button_mul);
-            buttons.Add(button_divide);
-            buttons.Add(button_del);
-            buttons.Add(button_C);
-            buttons.Add(button_CE);
-            buttons.Add(button_dot);
-            buttons.Add(button_equal);
         }
         private void InputDelete()
         {
@@ -146,9 +125,14 @@ namespace main_wpf
         }
         private void ButtonsFontFix()
         {
-            foreach (Button b in buttons)
+            Button button;
+            foreach (object b in MainGrid.Children)
             {
-                b.FontSize = Math.Min(b.ActualHeight, b.ActualWidth) / button_font_ratio;
+                if (b is Button)
+                {
+                    button = b as Button;
+                    button.FontSize = Math.Min(button.ActualHeight, button.ActualWidth) / button_font_ratio;
+                } 
             }
         }
         private void Window1_SizeChanged(object sender, SizeChangedEventArgs e)
