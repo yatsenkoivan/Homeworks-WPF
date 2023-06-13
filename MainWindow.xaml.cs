@@ -48,7 +48,8 @@ namespace main_wpf
         private void FontFix()
         {
             double ratio = SystemParameters.PrimaryScreenWidth / SystemParameters.PrimaryScreenHeight;
-            Label_Input.FontSize = Math.Min(inputFont, Label_Input.ActualWidth / Label_Input.Content.ToString().Length * ratio);
+            double temp = Math.Min(inputFont, Label_Input.ActualWidth / Label_Input.Content.ToString().Length * ratio);
+            Label_Input.FontSize = Math.Max(temp, Window1.FontSize);
         }
         private bool CheckLength()
         {
@@ -90,12 +91,14 @@ namespace main_wpf
         private void ButtonsFontFix()
         {
             Button button;
+            double temp;
             foreach (object b in MainGrid.Children)
             {
                 if (b is Button)
                 {
                     button = b as Button;
-                    button.FontSize = Math.Min(button.ActualHeight, button.ActualWidth) / button_font_ratio;
+                    temp = Math.Min(button.ActualHeight, button.ActualWidth) / button_font_ratio;
+                    button.FontSize = Math.Max(temp, Window1.FontSize);
                 } 
             }
         }

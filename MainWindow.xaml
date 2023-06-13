@@ -51,7 +51,6 @@
         <ScrollViewer x:Name = "Scroll" Width="250" Grid.Column="4" Visibility="Collapsed" Grid.RowSpan="6">
             <StackPanel x:Name="SidePanel" Orientation="Vertical"
                   VerticalAlignment="Stretch" CanVerticallyScroll="True">
-
             </StackPanel>
         </ScrollViewer>
         <Grid x:Name="clearGrid" Grid.Row="6" Grid.Column="5" Visibility="Collapsed">
