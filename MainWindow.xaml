@@ -58,6 +58,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <Button x:Name="clear_button" Visibility="Collapsed" Content="CLEAR" Click="clear_button_Click"></Button>
         </Grid>
     </Grid>
 

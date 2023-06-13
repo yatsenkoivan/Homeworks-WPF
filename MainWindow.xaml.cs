@@ -50,6 +50,10 @@ namespace main_wpf
             double ratio = SystemParameters.PrimaryScreenWidth / SystemParameters.PrimaryScreenHeight;
             Label_Input.FontSize = Math.Min(inputFont, Label_Input.ActualWidth / Label_Input.Content.ToString().Length * ratio);
         }
+        private bool CheckLength()
+        {
+            return Label_Input.Content.ToString().Length < maxLen;
+        }
         private void Input(Key key)
         {
             if (key == Key.Back)
@@ -60,17 +64,16 @@ namespace main_wpf
             {
                 button_equal_Click(null, null);
             }
-            if (Label_Input.Content.ToString().Length == maxLen) return;
-            if ((int)key >= 34 && (int)key <= 43)
+            FontFix();
+        }
+        private void InputDigit(char digit)
+        {
+            if (CheckLength() && digit >= '0' && digit <= '9')
             {
                 if (Label_Input.Content.ToString() == "0") Label_Input.Content = "";
-                Label_Input.Content = Label_Input.Content.ToString() + key.ToString()[1];
+                Label_Input.Content = Label_Input.Content.ToString() + digit;
+                FontFix();
             }
-            if (key == Key.OemComma && Label_Input.Content.ToString().Contains(',') == false)
-            {
-                Label_Input.Content = Label_Input.Content.ToString() + ",";
-            }
-            FontFix();
         }
         private void Window1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -84,44 +87,7 @@ namespace main_wpf
 
         private void button_digit_Click(object sender, RoutedEventArgs e)
         {
-            Key key;
-            char digit = (sender as Button).Content.ToString()[0];
-            switch (digit)
-            {
-                case '0':
-                    key = Key.D0;
-                    break;
-                case '1':
-                    key = Key.D1;
-                    break;
-                case '2':
-                    key = Key.D2;
-                    break;
-                case '3':
-                    key = Key.D3;
-                    break;
-                case '4':
-                    key = Key.D4;
-                    break;
-                case '5':
-                    key = Key.D5;
-                    break;
-                case '6':
-                    key = Key.D6;
-                    break;
-                case '7':
-                    key = Key.D7;
-                    break;
-                case '8':
-                    key = Key.D8;
-                    break;
-                case '9':
-                    key = Key.D9;
-                    break;
-                default:
-                    return;
-            }
-            Input(key);
+            InputDigit((sender as Button).Content.ToString()[0]);
         }
         private void ButtonsFontFix()
         {
@@ -206,16 +172,7 @@ namespace main_wpf
 
             if (SidePanel.Children.Count == 0)
             {
-                Button clear_button = new Button();
-                clear_button.Content = "🗑";
-
-                clear_button.Click += delegate
-                {
-                    SidePanel.Children.Clear();
-                    clearGrid.Children.Clear();
-                };
-
-                clearGrid.Children.Add(clear_button);
+                clear_button.Visibility = Visibility.Visible;             
 
             }
             SidePanel.Children.Insert(0, tb_result);
@@ -263,6 +220,12 @@ namespace main_wpf
             operation = null;
             Label_Operations.Content = "";
             FontFix();
+        }
+
+        private void clear_button_Click(object sender, RoutedEventArgs e)
+        {
+            SidePanel.Children.Clear();
+            clear_button.Visibility = Visibility.Collapsed;
         }
     }
 }
