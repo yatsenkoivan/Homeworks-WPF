@@ -61,11 +61,16 @@ namespace main_wpf
             {
                 InputDelete(null,null);
             }
-            if (key == Key.Enter)
+            if (key == Key.OemPlus && !(Keyboard.IsKeyDown(Key.LeftShift)||Keyboard.IsKeyDown(Key.RightShift)))
             {
                 button_equal_Click(null, null);
             }
-            if (key >= Key.D0 && key <= Key.D9) InputDigit(key.ToString()[1]);
+            if (key >= Key.D0 && key <= Key.D9 && !(Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))) InputDigit(key.ToString()[1]);
+            if (key == Key.OemQuestion) button_operation_Click(button_divide, null);
+            if (key == Key.OemMinus) button_operation_Click(button_subtract, null);
+            if (key == Key.OemPlus && (Keyboard.IsKeyDown(Key.LeftShift)||Keyboard.IsKeyDown(Key.RightShift))) button_operation_Click(button_add, null);
+            if (key == Key.D8 && (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))) button_operation_Click(button_mul, null);
+            if (key == Key.OemComma) button_dot_Click(null, null);
             FontFix();
         }
         private void InputDigit(char digit)
