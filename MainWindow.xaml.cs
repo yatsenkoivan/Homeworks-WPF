@@ -30,7 +30,7 @@ namespace main_wpf
             Label_Operations.Content = "";
             Label_Input.Content = "0";
         }
-        private void InputDelete()
+        private void InputDelete(object sender, RoutedEventArgs e)
         {
             int len = Label_Input.Content.ToString().Length;
             if (len > 0)
@@ -54,16 +54,18 @@ namespace main_wpf
         {
             return Label_Input.Content.ToString().Length < maxLen;
         }
-        private void Input(Key key)
+        private void Input(object sender, KeyEventArgs e)
         {
+            Key key = e.Key;
             if (key == Key.Back)
             {
-                InputDelete();
+                InputDelete(null,null);
             }
             if (key == Key.Enter)
             {
                 button_equal_Click(null, null);
             }
+            if (key >= Key.D0 && key <= Key.D9) InputDigit(key.ToString()[1]);
             FontFix();
         }
         private void InputDigit(char digit)
@@ -74,15 +76,6 @@ namespace main_wpf
                 Label_Input.Content = Label_Input.Content.ToString() + digit;
                 FontFix();
             }
-        }
-        private void Window1_KeyDown(object sender, KeyEventArgs e)
-        {
-            Input(e.Key);
-        }
-
-        private void button_del_Click(object sender, RoutedEventArgs e)
-        {
-            InputDelete();
         }
 
         private void button_digit_Click(object sender, RoutedEventArgs e)
@@ -199,7 +192,14 @@ namespace main_wpf
 
         private void button_dot_Click(object sender, RoutedEventArgs e)
         {
-            Input(Key.OemComma);
+            string temp = Label_Input.Content.ToString();
+            temp += ',';
+            try
+            {
+                double.Parse(temp);
+                Label_Input.Content = temp;
+            }
+            catch (Exception){ }
         }
 
         private void button_equal_Click(object sender, RoutedEventArgs e)

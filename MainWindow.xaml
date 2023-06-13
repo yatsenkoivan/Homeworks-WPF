@@ -1,4 +1,4 @@
-﻿<Window x:Name="Window1" x:Class="main_wpf.MainWindow"
+﻿<Window x:Name="Window1" x:Class="main_wpf.MainWindow" FontSize="18"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,7 +6,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Calculator" Height="520" Width="330" Cursor="AppStarting"
-        MinHeight="520" MinWidth="330" KeyDown="Window1_KeyDown" SizeChanged="Window1_SizeChanged">
+        MinHeight="520" MinWidth="330" KeyDown="Input" SizeChanged="Window1_SizeChanged">
+    <Window.Resources>
+        <Thickness x:Key="DefaultMargin" Bottom="5" Top="5" Left="5" Right="5"/>
+    </Window.Resources>
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition ></RowDefinition>
@@ -24,27 +27,27 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Label x:Name="Label_Operations" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontSize="18" HorizontalContentAlignment="RIght" IsEnabled="False"/>
+        <Label x:Name="Label_Operations" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HorizontalContentAlignment="RIght" IsEnabled="False"/>
         <Label x:Name="Label_Input" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4" Content="0" FontSize="72" HorizontalContentAlignment="Right"/>
-        <Button x:Name="button_CE" Background="Green" Grid.Row="2" Grid.Column="0" Content="CE" FontSize="18" Click="button_CE_Click" Height="Auto" Cursor="Hand"></Button>
-        <Button x:Name="button_C" Background="Green" Grid.Row="2" Grid.Column="1" Content="C" FontSize="18" Click="button_C_Click" Height="Auto"></Button>
-        <Button x:Name="button_del" Background="Green" Grid.Row="2" Grid.Column="2" Content="&lt;" FontSize="18" Click="button_del_Click" Height="Auto"/>
-        <Button x:Name="button_divide" Background="Green" Grid.Row="2" Grid.Column="3" Content="/" FontSize="18" Click="button_operation_Click" Height="Auto"></Button>
-        <Button x:Name="button_7" Grid.Row="3" Grid.Column="0" Content="7" FontSize="18" Click="button_digit_Click" Height="Auto"></Button>
-        <Button x:Name="button_8" Grid.Row="3" Grid.Column="1" Content="8" FontSize="18" Click="button_digit_Click" Height="Auto"></Button>
-        <Button x:Name="button_9" Grid.Row="3" Grid.Column="2" Content="9" FontSize="18" Click="button_digit_Click" Height="Auto"></Button>
-        <Button x:Name="button_mul" Background="Green" Grid.Row="3" Grid.Column="3" Content="*" FontSize="18" Click="button_operation_Click" Height="Auto"></Button>
-        <Button x:Name="button_4" Grid.Row="4" Grid.Column="0" Content="4" FontSize="18" Click="button_digit_Click" Height="Auto"></Button>
-        <Button x:Name="button_5" Grid.Row="4" Grid.Column="1" Content="5" FontSize="18" Click="button_digit_Click" Height="Auto"></Button>
-        <Button x:Name="button_6" Grid.Row="4" Grid.Column="2" Content="6" FontSize="18" Click="button_digit_Click" Height="Auto"></Button>
-        <Button x:Name="button_subtract" Background="Green" Grid.Row="4" Grid.Column="3" Content="-" FontSize="18" Click="button_operation_Click" Height="Auto"></Button>
-        <Button x:Name="button_1" Grid.Row="5" Grid.Column="0" Content="1" FontSize="18" Click="button_digit_Click" Height="Auto"></Button>
-        <Button x:Name="button_2" Grid.Row="5" Grid.Column="1" Content="2" FontSize="18" Click="button_digit_Click" Height="Auto"></Button>
-        <Button x:Name="button_3" Grid.Row="5" Grid.Column="2" Content="3" FontSize="18" Click="button_digit_Click" Height="Auto"></Button>
-        <Button x:Name="button_add" Background="Green" Grid.Row="5" Grid.Column="3" Content="+" FontSize="18" Click="button_operation_Click" Height="Auto"></Button>
-        <Button x:Name="button_dot" Grid.Row="6" Grid.Column="0" Content="." FontSize="18" Click="button_dot_Click" Height="Auto"></Button>
-        <Button x:Name="button_0" Grid.Row="6" Grid.Column="1" Content="0" FontSize="18" Click="button_digit_Click" Height="Auto"></Button>
-        <Button x:Name="button_equal" Background="DarkGreen" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Content="=" FontSize="18" Click="button_equal_Click" Height="Auto"></Button>
+        <Button x:Name="button_CE" Margin="{StaticResource DefaultMargin}" Background="Green" Grid.Row="2" Grid.Column="0" Content="CE"  Click="button_CE_Click" Cursor="Hand" Height="Auto"></Button>
+        <Button x:Name="button_C" Margin="{StaticResource DefaultMargin}" Background="Green" Grid.Row="2" Grid.Column="1" Content="C"  Click="button_C_Click" Height="Auto"></Button>
+        <Button x:Name="button_del" Margin="{StaticResource DefaultMargin}" Background="Green" Grid.Row="2" Grid.Column="2" Content="&lt;"  Click="InputDelete" Height="Auto"/>
+        <Button x:Name="button_divide" Margin="{StaticResource DefaultMargin}" Background="Green" Grid.Row="2" Grid.Column="3" Content="/"  Click="button_operation_Click" Height="Auto"></Button>
+        <Button x:Name="button_7" Margin="{StaticResource DefaultMargin}" Grid.Row="3" Grid.Column="0" Content="7"  Click="button_digit_Click" Height="Auto"></Button>
+        <Button x:Name="button_8" Margin="{StaticResource DefaultMargin}" Grid.Row="3" Grid.Column="1" Content="8"  Click="button_digit_Click" Height="Auto"></Button>
+        <Button x:Name="button_9" Margin="{StaticResource DefaultMargin}" Grid.Row="3" Grid.Column="2" Content="9"  Click="button_digit_Click" Height="Auto"></Button>
+        <Button x:Name="button_mul" Margin="{StaticResource DefaultMargin}" Background="Green" Grid.Row="3" Grid.Column="3" Content="*"  Click="button_operation_Click" Height="Auto"></Button>
+        <Button x:Name="button_4" Margin="{StaticResource DefaultMargin}" Grid.Row="4" Grid.Column="0" Content="4"  Click="button_digit_Click" Height="Auto"></Button>
+        <Button x:Name="button_5" Margin="{StaticResource DefaultMargin}" Grid.Row="4" Grid.Column="1" Content="5"  Click="button_digit_Click" Height="Auto"></Button>
+        <Button x:Name="button_6" Margin="{StaticResource DefaultMargin}" Grid.Row="4" Grid.Column="2" Content="6"  Click="button_digit_Click" Height="Auto"></Button>
+        <Button x:Name="button_subtract" Margin="{StaticResource DefaultMargin}" Background="Green" Grid.Row="4" Grid.Column="3" Content="-"  Click="button_operation_Click" Height="Auto"></Button>
+        <Button x:Name="button_1" Margin="{StaticResource DefaultMargin}" Grid.Row="5" Grid.Column="0" Content="1"  Click="button_digit_Click" Height="Auto"></Button>
+        <Button x:Name="button_2" Margin="{StaticResource DefaultMargin}" Grid.Row="5" Grid.Column="1" Content="2"  Click="button_digit_Click" Height="Auto"></Button>
+        <Button x:Name="button_3" Margin="{StaticResource DefaultMargin}" Grid.Row="5" Grid.Column="2" Content="3"  Click="button_digit_Click" Height="Auto"></Button>
+        <Button x:Name="button_add" Margin="{StaticResource DefaultMargin}" Background="Green" Grid.Row="5" Grid.Column="3" Content="+"  Click="button_operation_Click" Height="Auto"></Button>
+        <Button x:Name="button_dot" Margin="{StaticResource DefaultMargin}" Grid.Row="6" Grid.Column="0" Content="."  Click="button_dot_Click" Height="Auto"></Button>
+        <Button x:Name="button_0" Margin="{StaticResource DefaultMargin}" Grid.Row="6" Grid.Column="1" Content="0"  Click="button_digit_Click" Height="Auto"></Button>
+        <Button x:Name="button_equal" Margin="{StaticResource DefaultMargin}" Background="DarkGreen" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Content="="  Click="button_equal_Click" Height="Auto" Cursor="Hand"></Button>
         <ScrollViewer x:Name = "Scroll" Width="250" Grid.Column="4" Visibility="Collapsed" Grid.RowSpan="6">
             <StackPanel x:Name="SidePanel" Orientation="Vertical"
                   VerticalAlignment="Stretch" CanVerticallyScroll="True">
