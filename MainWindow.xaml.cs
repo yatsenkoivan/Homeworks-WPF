@@ -20,10 +20,41 @@ namespace Homeworks_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        static double opacity_value = 0.51;
+        static double opacity = 0.51;
+        static double default_opacity = 1;
         public MainWindow()
         {
             InitializeComponent();
+            TextBox_LostFocus(null, null);
+            PasswordBox_LostFocus(null, null);
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            EmailBorder.Opacity = opacity;
+        }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            EmailBorder.Opacity = default_opacity;
+        }
+        private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            PasswordBorder.Opacity = opacity;
+        }
+        private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PasswordBorder.Opacity = default_opacity;
+        }
+
+        private void EmailBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            EmailInput.Focus();
+        }
+
+        private void PasswordText_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            PasswordInput.Focus();
         }
     }
 }

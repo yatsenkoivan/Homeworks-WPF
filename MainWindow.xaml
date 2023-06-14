@@ -1,23 +1,36 @@
-﻿<Window x:Name="Window1" x:Class="Homeworks_WPF.MainWindow"
+﻿<Window x:Name="Window1" x:Class="Homeworks_WPF.MainWindow" FontFamily="Comic Sans MS"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Homeworks_WPF"
         mc:Ignorable="d"
-        MinHeight="512" MinWidth="720"
+        MinHeight="767" MinWidth="720"
         Title="MainWindow" Height="1024" Width="1440">
     <Grid>
-        <Image x:Name="LogInBG" Height="Auto" Width="Auto" Source="/Log In.png" Stretch="Fill"/>
-        <StackPanel>
-            <Label x:Name="LogInText" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Log In" Foreground="White" FontSize="48" FontFamily="Comic Sans MS" Margin="0,178,0,0"/>
-            <Label x:Name="EmailText" Content="Email" FontFamily="Comic Sans MS" Foreground="White" FontSize="24" Width="507" Margin="0,52,0,0"/>
-            <Border x:Name="EmailBorder" BorderBrush="White" CornerRadius="15" BorderThickness="4" HorizontalAlignment="Center" Width="507" Height="70">
-                
+        <Grid.RowDefinitions>
+            <RowDefinition Height="178.5*"/>
+            <RowDefinition Height="667*"/>
+            <RowDefinition Height="178.5*"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="LogInBG" Height="Auto" Width="Auto" Source="/Log In.png" Stretch="Fill" Grid.RowSpan="3"/>
+        <StackPanel Grid.Row="1">
+            <Label x:Name="LogInText" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Log In" Foreground="White" FontSize="48"/>
+            <Border x:Name="EmailBorder" BorderBrush="White" CornerRadius="15" BorderThickness="4" HorizontalAlignment="Center" Width="507" Height="70" Margin="0,104,0,0" MouseLeftButtonDown="EmailBorder_MouseLeftButtonDown">
+                <Grid>
+                    <Label x:Name="EmailText" Content="Email" Foreground="White" FontSize="24" Width="507" Margin="0,-52,0,0"/>
+                    <Image Source="email.png" Width="44" Height="44" Margin="18,0,0,0" HorizontalAlignment="Left"/>
+                    <Line StrokeThickness="2" X1="77" X2="77" Y1="13" Y2="49" Stroke="White"/>
+                    <TextBox x:Name="EmailInput" Text="example@gmail.com" HorizontalAlignment="Left" Foreground="White" FontSize="24" VerticalAlignment="Center" Margin="92,0,0,0" LostFocus="TextBox_LostFocus" GotFocus="TextBox_GotFocus"/>
+                </Grid>
             </Border>
-            <Label x:Name="PasswordText" Content="Password" FontFamily="Comic Sans MS" Foreground="White" FontSize="24" Width="507" Margin="0,27,0,0"/>
-            <Border x:Name="PasswordBorder" BorderBrush="White" CornerRadius="15" BorderThickness="4" HorizontalAlignment="Center" Width="507" Height="70">
-                
+            <Border x:Name="PasswordBorder" BorderBrush="White" CornerRadius="15" BorderThickness="4" HorizontalAlignment="Center" Width="507" Height="70" Margin="0,79,0,0">
+                <Grid>
+                    <Label x:Name="PasswordText" Content="Password" Foreground="White" FontSize="24" Width="507" Margin="0,-52,0,0" MouseLeftButtonDown="PasswordText_MouseLeftButtonDown"/>
+                    <Image Source="password.png" Width="44" Height="44" Margin="18,0,0,0" HorizontalAlignment="Left"/>
+                    <Line StrokeThickness="2" X1="77" X2="77" Y1="13" Y2="49" Stroke="White"/>
+                    <PasswordBox x:Name="PasswordInput" PasswordChar="*" Password="password" HorizontalAlignment="Left" Foreground="White" FontSize="24" VerticalAlignment="Center" Margin="92,0,0,0" GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"/>
+                </Grid>
             </Border>
         </StackPanel>
     </Grid>
