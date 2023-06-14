@@ -20,6 +20,7 @@ namespace Homeworks_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        static double opacity_value = 0.51;
         public MainWindow()
         {
             InitializeComponent();
