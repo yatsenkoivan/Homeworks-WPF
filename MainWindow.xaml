@@ -22,13 +22,13 @@
                     <Label x:Name="EmailText" Content="Email" Foreground="White" FontSize="18" Width="507" Margin="0,-41,0,0"/>
                     <Image Source="email.png" Width="44" Height="44" Margin="18,0,0,0" HorizontalAlignment="Left"/>
                     <Line StrokeThickness="2" X1="77" X2="77" Y1="13" Y2="49" Stroke="White"/>
-                    <TextBox x:Name="EmailInput" MaxLength="24" Text="example@gmail.com" HorizontalAlignment="Left"
+                    <TextBox x:Name="EmailInput" MaxLength="36" Text="example@gmail.com" HorizontalAlignment="Left"
                              Foreground="White" FontSize="24" VerticalAlignment="Center" Margin="92,0,0,0"
                              LostFocus="TextBox_LostFocus" GotFocus="TextBox_GotFocus"
                              materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"/>
                 </Grid>
             </Border>
-            <Border x:Name="PasswordBorder" BorderBrush="White" CornerRadius="15" BorderThickness="4" HorizontalAlignment="Center" Width="507" Height="70" Margin="0,79,0,0">
+            <Border x:Name="PasswordBorder" BorderBrush="White" CornerRadius="15" BorderThickness="4" HorizontalAlignment="Center" Width="507" Height="70" Margin="0,60,0,0">
                 <Grid>
                     <Label x:Name="PasswordText" Content="Password" Foreground="White" FontSize="18" Width="507" Margin="0,-41,0,0" MouseLeftButtonDown="PasswordText_MouseLeftButtonDown"/>
                     <Image Source="password.png" Width="44" Height="44" Margin="18,0,0,0" HorizontalAlignment="Left"/>
@@ -36,12 +36,17 @@
                     <PasswordBox x:Name="PasswordInput" PasswordChar="*" MaxLength="24" Password="password" HorizontalAlignment="Left" Foreground="White" FontSize="24" VerticalAlignment="Center" Margin="92,0,0,0" GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"/>
                 </Grid>
             </Border>
-            <Button Height="51" Margin="303,10,0,0" Content="Forget password?" Background="Black" Foreground="#ff1a7fc1" BorderBrush="Black" VerticalContentAlignment="Top" FontSize="15"/>
-            <Button Content="Log in" Style="{StaticResource MaterialDesignRaisedButton}" BorderBrush="#ff1a7fc1" materialDesign:ButtonAssist.CornerRadius="15" Width="490" Height="68" Background="#ff1a7fc1" Foreground="White" FontSize="23.5"/>
+            <Button Height="29" Width="156" Margin="303,10,0,0" Content="Forget password?" Background="Black" Foreground="#ff1a7fc1" BorderBrush="Black" VerticalContentAlignment="Top" FontSize="15"/>
+            <Button Content="Log in" Style="{StaticResource MaterialDesignRaisedButton}" BorderBrush="#ff1a7fc1" materialDesign:ButtonAssist.CornerRadius="15" Width="490" Height="68" Background="#ff1a7fc1" Foreground="White" FontSize="23.5" Margin="0,22,0,0"/>
             <StackPanel Margin="0,27,0,0" Height="29" Width="381" Orientation="Horizontal">
                 <Line X1="0" Y1="14.5" X2="164" Y2="14.5" Stroke="White" StrokeThickness="2"/>
                 <Label Content="Or" Width="40" Height="29" Foreground="White" FontSize="18" Margin="13,0,0,0"/>
                 <Line X1="0" Y1="14.5" X2="164" Y2="14.5" Stroke="White" StrokeThickness="2"/>
+            </StackPanel>
+            <Image Source="Social Icons.png" Width="198" Height="48" Margin="0,27,0,0"/>
+            <StackPanel Margin="0,27,0,0" Width="321" Height="33" Orientation="Horizontal">
+                <Label Content="Don't have an account?" Foreground="White" FontSize="18"/>
+                <Button Content="Sign Up" FontSize="18" Foreground="#ff1a7fc1" Background="Black" VerticalAlignment="Top" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" BorderBrush="Black" Height="33"/>
             </StackPanel>
         </StackPanel>
     </Grid>
