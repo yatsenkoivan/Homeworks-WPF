@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Homeworks_WPF"
         mc:Ignorable="d"
         MinHeight="767" MinWidth="720"
@@ -21,7 +22,7 @@
                     <Label x:Name="EmailText" Content="Email" Foreground="White" FontSize="24" Width="507" Margin="0,-52,0,0"/>
                     <Image Source="email.png" Width="44" Height="44" Margin="18,0,0,0" HorizontalAlignment="Left"/>
                     <Line StrokeThickness="2" X1="77" X2="77" Y1="13" Y2="49" Stroke="White"/>
-                    <TextBox x:Name="EmailInput" Text="example@gmail.com" HorizontalAlignment="Left" Foreground="White" FontSize="24" VerticalAlignment="Center" Margin="92,0,0,0" LostFocus="TextBox_LostFocus" GotFocus="TextBox_GotFocus"/>
+                    <TextBox x:Name="EmailInput" MaxLength="24" Text="example@gmail.com" HorizontalAlignment="Left" Foreground="White" FontSize="24" VerticalAlignment="Center" Margin="92,0,0,0" LostFocus="TextBox_LostFocus" GotFocus="TextBox_GotFocus"/>
                 </Grid>
             </Border>
             <Border x:Name="PasswordBorder" BorderBrush="White" CornerRadius="15" BorderThickness="4" HorizontalAlignment="Center" Width="507" Height="70" Margin="0,79,0,0">
@@ -29,9 +30,10 @@
                     <Label x:Name="PasswordText" Content="Password" Foreground="White" FontSize="24" Width="507" Margin="0,-52,0,0" MouseLeftButtonDown="PasswordText_MouseLeftButtonDown"/>
                     <Image Source="password.png" Width="44" Height="44" Margin="18,0,0,0" HorizontalAlignment="Left"/>
                     <Line StrokeThickness="2" X1="77" X2="77" Y1="13" Y2="49" Stroke="White"/>
-                    <PasswordBox x:Name="PasswordInput" PasswordChar="*" Password="password" HorizontalAlignment="Left" Foreground="White" FontSize="24" VerticalAlignment="Center" Margin="92,0,0,0" GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"/>
+                    <PasswordBox x:Name="PasswordInput" PasswordChar="*" MaxLength="24" Password="password" HorizontalAlignment="Left" Foreground="White" FontSize="24" VerticalAlignment="Center" Margin="92,0,0,0" GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus"/>
                 </Grid>
             </Border>
+            <Button Content="Log in" Style="{StaticResource MaterialDesignRaisedButton}" BorderBrush="#ff1a7fc1" materialDesign:ButtonAssist.CornerRadius="15" Width="490" Margin="0,61,0,0" Height="68" Background="#ff1a7fc1" Foreground="White" FontSize="31.35" Cursor="Hand"/>
         </StackPanel>
     </Grid>
 </Window>
