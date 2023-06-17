@@ -17,7 +17,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Date" Width="200" Binding="{Binding Date}"></DataGridTextColumn>
-                <!--<DataGridTextColumn Header="Priority" Width="150" Binding="{Binding Priority}"></DataGridTextColumn>-->
+                <DataGridTextColumn Header="Priority" Width="150" Binding="{Binding Priority}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Column="1" Grid.RowSpan="2">
@@ -38,6 +38,10 @@
                 <TextBox x:Name="tb_months" materialDesign:HintAssist.Hint="MM" Width="20" MaxLength="2" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden" HorizontalContentAlignment="Center"></TextBox>
                 <Label Margin="0,0,0,0">/</Label>
                 <TextBox x:Name="tb_years" materialDesign:HintAssist.Hint="YYYY" Width="40" MaxLength="4" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden" HorizontalContentAlignment="Center"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
+                <Label Margin="20,0,0,0" Width="50">Priority:</Label>
+                <TextBox x:Name="tb_priority" Width="30" MaxLength="3" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden" HorizontalContentAlignment="Center"></TextBox>
             </StackPanel>
             <Button Margin="0,25,0,0" Width="180" Cursor="Hand" Click="AddItem">Add</Button>
             <Button Margin="0,25,0,0" Width="180" Background="DarkRed" BorderBrush="DarkRed">Remove</Button>

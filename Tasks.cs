@@ -11,10 +11,12 @@ namespace Homeworks_WPF
     {
         private string name;
         private DateTime date;
-        public Task(string name, DateTime date)
+        private uint priority;
+        public Task(string name, DateTime date, uint priority)
         {
             this.name = name;
             this.date = date;
+            this.priority = priority;
         }
         public string Name
         {
@@ -23,6 +25,10 @@ namespace Homeworks_WPF
         public DateTime Date
         {
             get { return date; }
+        }
+        public uint Priority
+        {
+            get { return priority; }
         }
     }
 }

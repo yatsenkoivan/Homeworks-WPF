@@ -60,6 +60,7 @@ namespace Homeworks_WPF
             int dd;
             int hours;
             int minutes;
+            uint priority;
             try
             {
                 dd = int.Parse(tb_days.Text);
@@ -83,8 +84,13 @@ namespace Homeworks_WPF
                 MessageBox.Show("Time value is invalid!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            if (uint.TryParse(tb_priority.Text, out priority) == false)
+            {
+                MessageBox.Show("Priority value is invalid!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             DateTime date = new DateTime(yy, mm, dd, hours, minutes, 0);
-            Task task = new Task(tb_name.Text, date);
+            Task task = new Task(tb_name.Text, date, priority);
             data.Items.Add(task);
             WriteItem(task);
         }
