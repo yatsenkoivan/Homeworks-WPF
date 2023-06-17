@@ -4,9 +4,43 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Homeworks_WPF"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        MinWidth="540"
+        Title="TODO" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="240"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="data" ItemsSource="{DynamicResource Task}" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Date" Width="200" Binding="{Binding Date}"></DataGridTextColumn>
+                <!--<DataGridTextColumn Header="Priority" Width="150" Binding="{Binding Priority}"></DataGridTextColumn>-->
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="1" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
+                <Label Margin="20,0,0,0" Width="50">Name:</Label>
+                <TextBox x:Name="tb_name" Width="160" MaxLength="24" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
+                <Label Margin="20,0,0,0" Width="50">Time:</Label>
+                <TextBox x:Name="tb_hours" Width="20" MaxLength="2" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden" HorizontalContentAlignment="Center"></TextBox>
+                <Label Margin="0,0,0,0">:</Label>
+                <TextBox x:Name="tb_minutes" Width="20" MaxLength="2" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden" HorizontalContentAlignment="Center"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
+                <Label Margin="20,0,0,0" Width="50">Date:</Label>
+                <TextBox x:Name="tb_days" materialDesign:HintAssist.Hint="DD" Width="20" MaxLength="2" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden" HorizontalContentAlignment="Center"></TextBox>
+                <Label Margin="0,0,0,0">/</Label>
+                <TextBox x:Name="tb_months" materialDesign:HintAssist.Hint="MM" Width="20" MaxLength="2" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden" HorizontalContentAlignment="Center"></TextBox>
+                <Label Margin="0,0,0,0">/</Label>
+                <TextBox x:Name="tb_years" materialDesign:HintAssist.Hint="YYYY" Width="40" MaxLength="4" materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden" HorizontalContentAlignment="Center"></TextBox>
+            </StackPanel>
+            <Button Margin="0,25,0,0" Width="180" Cursor="Hand" Click="AddItem">Add</Button>
+            <Button Margin="0,25,0,0" Width="180" Background="DarkRed" BorderBrush="DarkRed">Remove</Button>
+        </StackPanel>
     </Grid>
 </Window>
