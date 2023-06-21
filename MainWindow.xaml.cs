@@ -22,31 +22,10 @@ namespace Homeworks_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static string data_path = "data.bin";
         public MainWindow()
         {
             InitializeComponent();
-            ReadItems();
-        }
-        private void ReadItems()
-        {
-            FileStream fs = File.Open(data_path, FileMode.Open, FileAccess.Read);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fs.Position < fs.Length)
-            {
-                data.Items.Add(bf.Deserialize(fs));
-            }
-            fs.Close();
-        }
-        private void WriteItem(Task task)
-        {
-            FileStream fs = File.Open(data_path, FileMode.OpenOrCreate, FileAccess.Write);
-            BinaryFormatter bf = new BinaryFormatter();
-            foreach (object i in data.Items)
-            {
-                bf.Serialize(fs,i as Task);
-            }
-            fs.Close();
+            data_SelectionChanged(null, null);
         }
         private void AddItem(object sender, RoutedEventArgs e)
         {
@@ -91,8 +70,28 @@ namespace Homeworks_WPF
             }
             DateTime date = new DateTime(yy, mm, dd, hours, minutes, 0);
             Task task = new Task(tb_name.Text, date, priority);
+            foreach (object i in data.Items)
+            {
+                if ((i as Task).Name == task.Name)
+                {
+                    MessageBox.Show("Task with such name already exist", "Could not add task", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+            }
             data.Items.Add(task);
-            WriteItem(task);
+        }
+
+        private void RemoveItem(object sender, RoutedEventArgs e)
+        {
+            if (data.SelectedIndex == -1 || data.SelectedIndex >= data.Items.Count) return;
+            int index = data.SelectedIndex;
+            data.Items.RemoveAt(index);
+        }
+
+        private void data_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (data.SelectedIndex == -1) button_remove.IsEnabled = false;
+            else button_remove.IsEnabled = true;
         }
     }
 }
